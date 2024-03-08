@@ -17,8 +17,8 @@ const app = express();
 app.use(express.json());
 
 //AWS
-const __dirname = path.dirname("")
-const buildpath = path.join(__dirname, "../frontend/build")
+const dirname = path.dirname("")
+const buildpath = path.join(dirname, "../frontend/build")
 app.use(express.static(buildpath));
 
 app.use(cors({

@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+const { Schema, model } = require("mongoose");
 
 const CommentSchema = new Schema(
   {
@@ -27,4 +27,4 @@ CommentSchema.virtual("replies", {
 });
 
 const Comment = model("Comment", CommentSchema);
-export default Comment;
+module.exports = Comment;

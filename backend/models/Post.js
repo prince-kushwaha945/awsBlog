@@ -1,4 +1,5 @@
-import { Schema, model } from "mongoose";
+const mongoose = require("mongoose");
+const { Schema, model } = mongoose;
 
 const PostSchema = new Schema(
   {
@@ -21,4 +22,4 @@ PostSchema.virtual("comments", {
 });
 
 const Post = model("Post", PostSchema);
-export default Post;
+module.exports = Post;

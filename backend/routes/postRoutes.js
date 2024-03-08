@@ -1,13 +1,13 @@
-import express from "express";
+const express = require("express");
 const router = express.Router();
-import {
+const {
   createPost,
   deletePost,
   getAllPosts,
   getPost,
   updatePost,
-} from "../controllers/postControllers";
-import { authGuard, adminGuard } from "../middleware/authMiddleware";
+} = require("../controllers/postControllers");
+const { authGuard, adminGuard } = require("../middleware/authMiddleware");
 
 router.route("/").post(authGuard, adminGuard, createPost).get(getAllPosts);
 router
@@ -16,4 +16,4 @@ router
   .delete(authGuard, adminGuard, deletePost)
   .get(getPost);
 
-export default router;
+module.exports = router;

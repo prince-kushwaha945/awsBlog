@@ -1,12 +1,12 @@
-import express from "express";
+const express = require("express");
 const router = express.Router();
-import {
+const {
   createComment,
   deleteComment,
   getAllComments,
   updateComment,
-} from "../controllers/commentControllers";
-import { adminGuard, authGuard } from "../middleware/authMiddleware";
+} = require("../controllers/commentControllers");
+const { adminGuard, authGuard } = require("../middleware/authMiddleware");
 
 router
   .route("/")
@@ -17,4 +17,4 @@ router
   .put(authGuard, updateComment)
   .delete(authGuard, deleteComment);
 
-export default router;
+module.exports = router;

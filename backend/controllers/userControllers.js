@@ -1,8 +1,8 @@
-import { uploadPicture } from "../middleware/uploadPictureMiddleware";
-import Comment from "../models/Comment";
-import Post from "../models/Post";
-import User from "../models/User";
-import { fileRemover } from "../utils/fileRemover";
+const uploadPictureMiddleware = require("../middleware/uploadPictureMiddleware");
+const Comment = require("../models/Comment");
+const Post = require("../models/Post");
+const User = require("../models/User");
+const { fileRemover } = require("../utils/fileRemover");
 
 const registerUser = async (req, res, next) => {
   try {
@@ -135,7 +135,7 @@ const updateProfile = async (req, res, next) => {
 
 const updateProfilePicture = async (req, res, next) => {
   try {
-    const upload = uploadPicture.single("profilePicture");
+    const upload = uploadPictureMiddleware.single("profilePicture");
 
     upload(req, res, async function (err) {
       if (err) {
@@ -226,8 +226,7 @@ const getAllUsers = async (req, res, next) => {
 
 const deleteUser = async (req, res, next) => {
   try {
-    let user = await User.findById(req.params.userId);
-
+    let user = await User.findById
     if (!user) {
       throw new Error("User no found");
     }

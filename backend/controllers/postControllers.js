@@ -1,8 +1,8 @@
-import { uploadPicture } from "../middleware/uploadPictureMiddleware";
-import Post from "../models/Post";
-import Comment from "../models/Comment";
-import { fileRemover } from "../utils/fileRemover";
-import { v4 as uuidv4 } from "uuid";
+const uploadPictureMiddleware = require("../middleware/uploadPictureMiddleware");
+const Post = require("../models/Post");
+const Comment = require("../models/Comment");
+const { fileRemover } = require("../utils/fileRemover");
+const { v4: uuidv4 } = require("uuid");
 
 const createPost = async (req, res, next) => {
   try {
@@ -35,7 +35,7 @@ const updatePost = async (req, res, next) => {
       return;
     }
 
-    const upload = uploadPicture.single("postPicture");
+    const upload = uploadPictureMiddleware.single("postPicture");
 
     const handleUpdatePostData = async (data) => {
       const { title, caption, slug, body, tags, categories } = JSON.parse(data);
@@ -196,4 +196,4 @@ const getAllPosts = async (req, res, next) => {
   }
 };
 
-export { createPost, updatePost, deletePost, getPost, getAllPosts };
+module.exports = { createPost, updatePost, deletePost, getPost, getAllPosts };

@@ -1,18 +1,15 @@
 const express =  require("express");
 const dotenv =  require("dotenv"); 
 const path = require("path");
-import connectDB from "./config/db";
+const connectDB = require("./config/db");
 const cors =  require("cors");
-import {
-  errorResponserHandler,
-  invalidPathHandler,
-} from "./middleware/errorHandler";
+const { errorResponserHandler, invalidPathHandler } = require("./middleware/errorHandler");
 
 // Routes
-import userRoutes from "./routes/userRoutes";
-import postRoutes from "./routes/postRoutes";
-import commentRoutes from "./routes/commentRoutes";
-import postCategoriesRoutes from "./routes/postCategoriesRoutes";
+const userRoutes = require("./routes/userRoutes");
+const postRoutes = require("./routes/postRoutes");
+const commentRoutes = require("./routes/commentRoutes");
+const postCategoriesRoutes = require("./routes/postCategoriesRoutes");
 
 dotenv.config();
 connectDB();

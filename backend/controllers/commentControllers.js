@@ -1,5 +1,5 @@
-import Comment from "../models/Comment";
-import Post from "../models/Post";
+const Comment = require("../models/Comment");
+const Post = require("../models/Post");
 
 const createComment = async (req, res, next) => {
   try {
@@ -126,4 +126,4 @@ const getAllComments = async (req, res, next) => {
   }
 };
 
-export { createComment, updateComment, deleteComment, getAllComments };
+module.exports = { createComment, updateComment, deleteComment, getAllComments };

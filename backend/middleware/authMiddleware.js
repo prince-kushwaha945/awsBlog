@@ -1,7 +1,7 @@
-import { verify } from "jsonwebtoken";
-import User from "../models/User";
+const { verify } = require("jsonwebtoken");
+const User = require("../models/User");
 
-export const authGuard = async (req, res, next) => {
+exports.authGuard = async (req, res, next) => {
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith("Bearer")
@@ -23,7 +23,7 @@ export const authGuard = async (req, res, next) => {
   }
 };
 
-export const adminGuard = (req, res, next) => {
+exports.adminGuard = (req, res, next) => {
   if (req.user && req.user.admin) {
     next();
   } else {

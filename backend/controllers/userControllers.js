@@ -255,7 +255,7 @@ const deleteUser = async (req, res, next) => {
   }
 };
 
-export {
+module.exports = {
   registerUser,
   loginUser,
   userProfile,
